@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+
+    <link rel="icon" type="images/png" href="{% static 'images/youtube-icon.png' %}">
+
+    <!-- CDNS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
+        integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+
+    <!--    matrial icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!--    css-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/video.css' %}">
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="header_left">
+            <i id="menu" class="material-icons">menu</i>
+            <img
+                src="https://www.xda-developers.com/files/2017/08/After-12-Years-Google-Gives-YouTube-a-New-Logo-1900x700_c.png">
+        </div>
+        <div class="header_search">
+            <form action="">
+                <input type="text" placeholder="search">
+                <button><i class="material-icons">search</i></button>
+                <button style="margin: 0px 10px 0px 10px ;"><i class="material-icons">keyboard_voice</i></button>
+            </form>
+        </div>
+        <div class="header_icons">
+            <i class="material-icons display-this">search</i>
+            <i class="material-icons display-this">videocam</i>
+            <i class="material-icons display-this">apps</i>
+            <i class="material-icons display-this">notifications</i>
+            <i id="dropdown" class="material-icons display-this">account_circle</i>
+        </div>
+    </div>
+
+    <main class="single_pages">
+        <section class="video_items flex">
+            <div class="left">
+                <div class="left_content">
+                    <video controls>
+
+                        <source src='{% static "videos/a1.mp4" %}' type="video/mp4"
+                            poster="{% static 'images/1.jpg' %}">
+                        </source>
+                    </video>
+
+                    <div class="tag">
+                        <label for="" class="tag">#child #parents</label>
+                        <p>Play With A child</p>
+
+                    </div>
+
+                    <div class="view flex2 border_bottom">
+                        <div class="view-text">
+                            <span>100,65 Views</span>
+                        </div>
+                        <div class="flex">
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-thumbs-up"></i></a>
+                                <label for="">5k</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-thumbs-down"></i></a>
+                                <label for="">Dislike</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-share"></i></a>
+                                <label for="">Share</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-scissors"></i></a>
+                                <label for="">Clip</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-bookmark"></i></a>
+                                <label for="">Save</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-thumbs-up"></i></a>
+                                <label for="">5k</label>
+                            </div>
+
+                            <div class="icon">
+                                <a href=""> <i class="fa fa-ellipsis"></i></a>
+                                <label for="">5k</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="details flex border_bottom">
+                        <div class="img">
+                            <img  src="{% static 'images/1.jpg' %}" alt="">
+                        </div>
+                        <div class="heading">
+                            <h4>Avadh <small><i class="fa fa-check-circle"></i></small> </h4>
+                            <span>2.42k Subscribes</span>
+
+                            <h5>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur odit facere
+                                exercitationem expedita eaque ipsum voluptatum ratione fugiat perspiciatis est.</h5>
+
+                            <span>show more</span>
+                        </div>
+                        <div>
+
+                            <a href="" class="subscribe-btn" Subscribe></a>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="comments">
+                        <div class="comments-heading flex">
+                            <h2>2 commments</h2>
+                            <h4>
+                                <i class="fa fa-list-ul"></i> <label for="">Sort By</label>
+                            </h4>
+                        </div>
+                    </div>
+
+                    <div class="details comments_self flex">
+                        <div class="img">
+                            <img  src="{% static 'images/logo.jpg' %}" alt="">
+                        </div>
+                        <div class="heading">
+                            <input type="text" placeholder="Add a Comment...">
+                        </div>
+                    </div>
+
+                    <div class="details_comment">
+                        <div class="detail-flex">
+                            <div class="img">
+                                <img  src="{% static 'images/logo.jpg' %}" alt="">
+                            </div>
+                            <div class="heading">
+                                <h4>Meet Hk <span>17 Months ago</span></h4>
+                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste, harum.</p>
+                                <div class="comment_like flex">
+                                    <div class="icon">
+                                        <i class="fa fa-thumbs-up"></i>
+                                        <label for="">5</label>
+                                    </div>
+
+                                    <div class="icon">
+                                        <i class="fa fa-thumbs-down"></i>
+                                        <label for="">Dislike</label>
+                                    </div>
+                                    <div class="icon">
+                                        <label for=""><a href=""> Replay</a></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="replay">
+                        <label for="" class="tags"><i class="fa fa-caret-up"></i>Hide Replay</label>
+                        <div class="replay-details flex">
+                            <div class="img">
+                                <img  src="{% static 'images/logo.jpg' %}" alt="">
+                            </div>
+                            <div class="text">
+                                <h4><label for="">Avadh </label><span>16 Months Ago</span></h4>
+                                <p>Lorem ipsum dolor sit amet consectetur.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="right">
+                <div class="right-container">
+                    <button class="chat">Show Chat Replay</button>
+                    <div class="tags">
+                        <label for="" class="tags-bg">All</label>
+                        <label for="" class="tags-bg">Web Design</label>
+                        <label for="" class="tags-bg">Frontend</label>
+                        <label for="" class="tags-bg">Html</label>
+                    </div>
+
+                    <div class="video_item video_sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                            <span>Avadh <i class="fa fa-check-circle"></i></span>
+                            <span>100k views .1 week ago</span>
+                        </div>
+                    </div>
+
+                    <div class="video_item video_sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                            <span>Avadh <i class="fa fa-check-circle"></i></span>
+                            <span>100k views .1 week ago</span>
+                        </div>
+                    </div>
+
+
+                    <div class="video_item video_sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                            <span>Avadh <i class="fa fa-check-circle"></i></span>
+                            <span>100k views .1 week ago</span>
+                        </div>
+                    </div>
+
+                    <div class="video_item video_sidebar flex">
+                        <a href="">
+                            <img src="{% static 'images/1.jpg' %}" alt="">
+                        </a>
+                        <div class="details">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                            <span>Avadh <i class="fa fa-check-circle"></i></span>
+                            <span>100k views .1 week ago</span>
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+            </div>
+
+
+        </section>
+
+    </main>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
