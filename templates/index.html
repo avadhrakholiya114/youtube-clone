@@ -29,8 +29,8 @@
 <div class="header">
     <div class="header_left">
         <i id="menu" class="material-icons">menu</i>
-        <img 
-             src="https://www.xda-developers.com/files/2017/08/After-12-Years-Google-Gives-YouTube-a-New-Logo-1900x700_c.png">
+        <img
+                src="https://www.xda-developers.com/files/2017/08/After-12-Years-Google-Gives-YouTube-a-New-Logo-1900x700_c.png">
     </div>
     <div class="header_search">
         <form action="">
@@ -40,11 +40,11 @@
         </form>
     </div>
     <div class="header_icons">
-        <i class="material-icons display-this">search</i>
+
         <i class="material-icons display-this">videocam</i>
         <i class="material-icons display-this">apps</i>
         <i class="material-icons display-this">notifications</i>
-        <i id="dropdown" class="material-icons display-this">account_circle</i>
+        <i class="material-icons display-this">account_circle</i>
     </div>
 </div>
 
@@ -53,21 +53,20 @@
 <div class="mainBody">
     <div class="sidebar">
         <div class="sidebar_categories">
-            
-      
-                <div class="sidebar_category">
-                    <i class="material-icons">home</i>
-                    <span>Home</span>
-                </div>
-           
 
-            
+
+            <div class="sidebar_category">
+                <i class="material-icons">home</i>
+                <span>Home</span>
+            </div>
+
+
             <div class="sidebar_category">
                 <i class="material-icons">local_fire_department</i>
                 <span>Trending</span>
             </div>
 
-            
+
             <div class="sidebar_category">
                 <i class="material-icons">subscriptions</i>
                 <span>Subscriptions</span>
@@ -76,32 +75,31 @@
         <hr>
         <div class="sidebar_categories">
 
-            
+
             <div class="sidebar_category">
                 <i class="material-icons">library_add_check</i>
                 <span>Library</span>
             </div>
 
-            
+
             <div class="sidebar_category">
                 <i class="material-icons">history</i>
                 <span>History</span>
             </div>
 
-            
-                <div class="sidebar_category">
-                    <i class="material-icons">play_arrow</i>
-                    <span>Your Videos</span>
-                </div>
-          
 
-            
+            <div class="sidebar_category">
+                <i class="material-icons">play_arrow</i>
+                <span>Your Videos</span>
+            </div>
+
+
             <div class="sidebar_category">
                 <i class="material-icons">watch_later</i>
                 <span>Watch Later</span>
             </div>
 
-            
+
             <div class="sidebar_category">
                 <i class="material-icons">thumb_up</i>
                 <span>Liked Videos</span>
@@ -109,140 +107,32 @@
         </div>
         <hr>
     </div>
-    </div>
 
     <div class="videos">
-        
-            <div>
-                <div class="drop-down-container">
-                    
-                    <h1>Recommended</h1>
-                    <div class="dropdown-bg">
-                        <div class="dropdown-contents">
-                            <div class="dropdown-content">
-                                <i  class="material-icons">videocam</i>
-                                <span>Create</span>
-                            </div>
-                            <div class="dropdown-content">
-                                <i  class="material-icons">settings</i>
-                                <span>Settning</span>
-                            </div>
-                            <div class="dropdown-content">
-                                <i  class="material-icons">person</i>
-                                <span>Switch-account</span>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
+        <h1>Recommended</h1>
 
-            </div>
-          
-            
+
         <div class="videos__container">
-           
+            {% for i in video %}
             <div class="video">
                 <div class="video_thumbnail">
-                    <img src="{% static 'images/1.jpg' %}" alt="">
+                    <a href="{% url 'video' i.id %}"> <img src="{{ i.img.url }}" alt=""></a>
                 </div>
                 <div class="video_details">
                     <div class="author">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
-                    </div>
-                    <div class="title">
-                        <h3>Youtube Clone Using HTML, CSS and JS</h3>
-                        <a href=""><small>Desphixs <i class="fas fa-check-circle"></i></small></a>
-                        <span><small>1M Views . 1 Months Ago</small></span>
-                    </div>
-                </div>
-            </div>
+                        <img src="{{ i.user.channel.img.url }}" alt="">
 
-           
-            <div class="video">
-                <div class="video_thumbnail">
-                    <img src="{% static 'images/1.jpg' %}" alt="">
-                </div>
-                <div class="video_details">
-                    <div class="author">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
                     </div>
-                    <div class="title">
-                        <h3>Youtube Clone Using HTML, CSS and JS</h3>
-                        <a href=""><small>Desphixs <i class="fas fa-check-circle"></i></small></a>
-                        <span><small>1M Views . 1 Months Ago</small></span>
-                    </div>
-                </div>
-            </div>
 
-            
-
-           
-            <div class="video">
-                <div class="video_thumbnail">
-                    <img src="{% static 'images/1.jpg' %}" alt="">
-                </div>
-                <div class="video_details">
-                    <div class="author">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
-                    </div>
                     <div class="title">
-                        <h3>Youtube Clone Using HTML, CSS and JS</h3>
-                        <a href=""><small>Desphixs <i class="fas fa-check-circle"></i></small></a>
-                        <span><small>1M Views . 1 Months Ago</small></span>
+                      <a href="{% url 'video' i.id %}">   <h3>{{ i.title|truncatechars:30 }}</h3></a>
+                        <a href=""><small>{{i.user.user_user.channel_name}} <i class="fas fa-check-circle"></i></small></a>
+                        <span><small>{{ i.views }} Views . {{ i.date|timesince }} ago</small></span>
                     </div>
                 </div>
             </div>
-
-           
-            <div class="video">
-                <div class="video_thumbnail">
-                    <img src="{% static 'images/1.jpg' %}" alt="">
-                </div>
-                <div class="video_details">
-                    <div class="author">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
-                    </div>
-                    <div class="title">
-                        <h3>Youtube Clone Using HTML, CSS and JS</h3>
-                        <a href=""><small>Desphixs <i class="fas fa-check-circle"></i></small></a>
-                        <span><small>1M Views . 1 Months Ago</small></span>
-                    </div>
-                </div>
-            </div>
-
-           
-            <div class="video">
-                <div class="video_thumbnail">
-                    <img src="{% static 'images/1.jpg' %}" alt="">
-                </div>
-                <div class="video_details">
-                    <div class="author">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
-                    </div>
-                    <div class="title">
-                        <h3>Youtube Clone Using HTML, CSS and JS</h3>
-                        <a href=""><small>Desphixs <i class="fas fa-check-circle"></i></small></a>
-                        <span><small>1M Views . 1 Months Ago</small></span>
-                    </div>
-                </div>
-            </div>
-           
-            <div class="video">
-                <div class="video_thumbnail">
-                    <img src="{% static 'images/1.jpg' %}" alt="">
-                </div>
-                <div class="video_details">
-                    <div class="author">
-                        <img src="{% static 'images/logo.jpg' %}" alt="">
-                    </div>
-                    <div class="title">
-                        <h3>Youtube Clone Using HTML, CSS and JS</h3>
-                        <a href=""><small>Desphixs <i class="fas fa-check-circle"></i></small></a>
-                        <span><small>1M Views . 1 Months Ago</small></span>
-                    </div>
-                </div>
-            </div>
-            
+            {% endfor %}
 
 
         </div>

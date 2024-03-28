@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     # my apps
     'core',
     'taggit',
-    'import_export'
+    'import_export',
+    'channel'
 
 ]
 
