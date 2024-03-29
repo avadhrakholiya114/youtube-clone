@@ -6,5 +6,5 @@ urlpatterns = [
     path("video/<int:id>", views.detail, name="video"),
 
     path('save_comment/', views.save_comment, name='save_comment'),
-
+    path('delete_comment/', views.delete_comment, name='delete_comment'),
 ]

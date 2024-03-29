@@ -141,7 +141,7 @@
 
                 <div class="comment">
                     <div class="comment-heading flex">
-                        <h4>{{comment_count  }} Comments</h4>
+                        <h4>{{comment_count }} Comments</h4>
                         <h4><i class="fa fa-list-ul"></i> <label>Sort By</label></h4>
                     </div>
                 </div>
@@ -171,7 +171,50 @@
 
                     {% for c in comment %}
                     <div class="comment-tray">
+                        <div class="details_Comment">
+                            <div class="details flex">
+                                <div class="img">
+                                    <img src="{% static 'images/logo.jpg' %}" alt="">
+                                </div>
+                                <div class="heading">
+                                    <h4><b>{{ c.user.username|title }}</b><span>{{ c.date|timesince }} ago</span></h4>
+                                    <p>{{c.comment}}</p>
+                                    <div class="comment-like flex">
+                                        <div class="icon">
+                                            <i class="fa fa-thumbs-up"></i>
+                                            <label for="">5</label>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-thumbs-down"></i>
+                                            <label for="">Dislike</label>
+                                        </div>
+                                        <div class="icon">
+                                            <label for=""><a href="">Reply</a></label>
+                                        </div>
+                                        <div class="icon">
+                                            <input type="hidden" value="{{ c.id }}" name="" id="">
 
+                                        <button class="del" data-cid="{{ c.id }}" style="text-decoration: none; color: inherit; cursor: pointer; color: #d9534f;">Delete</button>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="replay">
+                            <label for="" class="tags"><i class="fa fa-caret-up"></i>Hide Reply</label>
+                            <div class="replay-details flex">
+                                <div class="img">
+                                    <img src="{% static 'images/logo.jpg' %}" alt="">
+                                </div>
+                                <div class="text">
+                                    <h4><label for="">Avadh</label> <span>16 Months ago</span></h4>
+                                    <p>Thank you</p>
+                                </div>
+                            </div>
+                        </div>
 
                         <hr>
                     </div>
@@ -298,6 +341,42 @@
             }
         });
     });
+
+
+
+//deleting ccomment
+
+$('.comment-wrapper').on("click", ".del", function(){
+    //console.log("delete button");
+
+    let id = $(this).attr("data-cid")
+
+    mydata={
+        //this cid is which we get in view
+        cid : id
+    }
+    mythis  =  $(this)
+    $.ajax({
+        type:"POST",
+        url : "{% url 'delete_comment' %}",
+        data : mydata,
+        success:function(data){
+        console.log(data)
+        if(data.status===1)
+        {
+            $(mythis).closest(".comment-tray").fadeOut();
+        }
+        if(data.status===0)
+        {
+            alert("Unable to delete commet! try again later")
+        }
+        }
+
+    })
+
+});
+
+
 
 </script>
 
