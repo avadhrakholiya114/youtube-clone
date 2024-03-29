@@ -24,10 +24,12 @@ def detail(request,id):
     #getting all commment releted to video
 
     comment=Comment.objects.filter(video=video,active=True).order_by("-date")
+    comment_count = comment.count()
 
     context = {
         "video": video,
-        "comment":comment
+        "comment":comment,
+        "comment_count": comment_count,
     }
     return render(request, 'video.html', context)
 
