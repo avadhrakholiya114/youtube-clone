@@ -89,3 +89,25 @@ def load_sub(request, id):
     sub_list = list(subscriber.subscriber.values())
     return JsonResponse({'subscribers': sub_list})
 
+
+from django.http import JsonResponse
+
+def add_like(request, id):
+    video = Video.objects.get(id=id)
+    user = request.user
+
+    if user in video.likes.all():
+        # Remove because the user has already liked the video
+        video.likes.remove(user)
+        response = "Like"
+    else:
+        video.likes.add(user)
+        response = "Dislike"
+
+    like_count = video.likes.count()
+    return JsonResponse({'response': response, 'like_count': like_count})
+
+def load_like(request, id):
+    video = Video.objects.get(id=id)
+    like_count = video.likes.count()
+    return JsonResponse({'like_count': like_count})

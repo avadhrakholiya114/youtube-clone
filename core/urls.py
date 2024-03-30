@@ -12,5 +12,11 @@ urlpatterns = [
     # subscriber
 
     path('new_subsciber/<int:id>/', views.new_subscriber, name='new_subsciber'),
-    path('load_sub/<int:id>/', views.load_sub, name='load_sub')
+    path('load_sub/<int:id>/', views.load_sub, name='load_sub'),
+
+
+    # likes
+    path('add_like/<int:id>/', views.add_like, name='add_like'),
+    path('load_like/<int:id>/', views.load_like, name='load_like')
+
 ]

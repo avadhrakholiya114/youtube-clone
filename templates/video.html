@@ -41,6 +41,10 @@
             background-color: gray;
             color: white;
         }
+
+        .liked {
+            color: blue;
+        }
     </style>
 </head>
 
@@ -99,13 +103,14 @@
 
                         <div class="flex">
                             <div class="icon">
-                                <a href=""><i class="fa fa-thumbs-up"></i></a>
-                                <label for="">5k</label>
+                                <button id="like_button" onclick="addlike()"><i class="fa fa-thumbs-up"></i></button>
+                                <label for=""><span id="like-count"></span></label>
                             </div>
 
                             <div class="icon">
-                                <a href=""><i class="fa fa-thumbs-down"></i></a>
-                                <label for="">Dislike</label>
+                                <button id="dislike_button" onclick="addlike()"><i
+                                        class="fa fa-thumbs-down"></i></button>
+                                <label for=""><span id="dislike-count"></span></label>
                             </div>
 
                             <div class="icon">
@@ -435,8 +440,47 @@
         window.onload = loadsub
 
 
+
+
     </script>
 
+
+    <script>
+
+        let likecount = document.getElementById("like-count");
+        let like_btn = document.getElementById("like_button");
+        likes_add = []
+
+        function addlike() {
+            axios.get("{% url 'add_like' video.id %}")
+                .then((response) => {
+                    if (response.data.response === 'Like') {
+                        document.getElementById('like_button').classList.remove('liked');
+                    } else {
+                        document.getElementById('like_button').classList.add('liked');
+                    }
+                    document.getElementById('like-count').innerText = response.data.like_count;
+
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function loadlike() {
+            axios.get("{% url 'load_like' video.id %}")
+                .then((response) => {
+                    document.getElementById('like-count').innerText = response.data.like_count;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+    
+        window.onload = loadlike;
+
+    </script>
 
 </body>
 

@@ -43,10 +43,10 @@ class Video(models.Model):
     tags = TaggableManager()
     date = models.DateTimeField(auto_now=True)
     visibility = models.CharField(choices=VISIBILITY, max_length=100, default="public")
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
     views = models.PositiveIntegerField(default=0)
     catagory = models.CharField(choices=CATEGORIES, max_length=100, default="other")
-
+    likes = models.ManyToManyField(User, related_name="likes", blank=True)
     def __str__(self):
         return self.title
 
